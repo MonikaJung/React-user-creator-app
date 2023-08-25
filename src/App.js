@@ -1,5 +1,5 @@
 import React from "react"; 
-import UserForm from "./components/UserInputs/UserInputs";
+import UserForm from "./components/UserForm/UserForm";
 import UserList from "./components/UserList/UserList";
 
 function App() {
@@ -30,10 +30,8 @@ function App() {
   }
 
   const deleteUserHandler = (userId) => {
-    console.log(usersList.length);
     setUsersList((prevUsersList) => {
       const updatedUsersList = prevUsersList.filter((user) => user.id !== userId);
-      console.log(updatedUsersList.length);
       return updatedUsersList;
     });
   };

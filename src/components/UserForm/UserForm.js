@@ -20,7 +20,9 @@ export default function UserForm(props) {
   function onSubmitHandler(event) {
     event.preventDefault();
     
-    if(areInputsValid()) {
+    const isAgeOK = isAgeValid()
+
+    if(isUsernameValid() && isAgeOK) {
       const userData = {
         username: usernameInput,
         age: ageInput,
@@ -29,19 +31,6 @@ export default function UserForm(props) {
       props.onAddUser(userData)
     }
     else console.log("SUBMIT DENIED");
-  }
-
-  function areInputsValid(){
-    let isAgeOK = false;
-
-    if (ageInput === "" || ageInput < 0 || ageInput > 180)
-      setIsAgeCorrect(false);
-    else {
-      setIsAgeCorrect(true);
-      isAgeOK = true;
-    }
-
-    return isUsernameValid() && isAgeOK;
   }
 
   function isUsernameValid() {
@@ -71,7 +60,6 @@ export default function UserForm(props) {
   function onResetHandler(event) {
     event.preventDefault();
     cleanInputs();
-    console.log("RESET");
   }
 
   function cleanInputs() {
@@ -84,7 +72,7 @@ export default function UserForm(props) {
   return (
     <form className={styles.form} onSubmit={onSubmitHandler}>
       <div className={styles["form-inputs"]}>
-        <div className={styles["form-inputs-pair"]}>
+        <div className={`${styles["form-inputs-pair"]} ${!isUsernameCorrect && styles.invalid}`}>
           <label htmlFor="username">Username: </label>
           <input
             type="text"
@@ -95,9 +83,9 @@ export default function UserForm(props) {
           {!isUsernameCorrect && <p>Username must start with A letter, end with a letter or a number 
             <br/>and&nbsp;-_.@ signs and contain only letters, numbers.</p>}
         </div>
-        <div className={styles["form-inputs-pair"]}>
+        <div className={`${styles["form-inputs-pair"]} ${!isAgeCorrect && styles.invalid}`}>
           <label htmlFor="age">User Age: </label>
-          <input
+          <input 
             type="number"
             id="age"
             value={ageInput}

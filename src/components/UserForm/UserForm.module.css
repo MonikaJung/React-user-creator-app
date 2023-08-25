@@ -45,6 +45,11 @@
     margin-left: 17%;
 }
 
+.form-inputs-pair.invalid input {
+    background-color: rgb(248, 205, 205);
+    border: 2px solid rgb(158, 39, 39);
+}
+
 .form-actions {
   margin: auto 5rem;
 }
