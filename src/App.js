@@ -1,6 +1,7 @@
-import React from "react"; 
+import React from "react";
 import UserForm from "./components/UserForm/UserForm";
 import UserList from "./components/UserList/UserList";
+import EmptyList from "./components/UserList/EmptyList";
 
 function App() {
   const [usersList, setUsersList] = React.useState([
@@ -21,25 +22,35 @@ function App() {
     },
   ]);
 
-  function addUserHandler (user) {
+  function addUserHandler(user) {
     setUsersList((prevUsersList) => {
       const updatedUsersList = [...prevUsersList];
-      updatedUsersList.unshift({ username: user.username, age: user.age, id: Math.random().toString() });
+      updatedUsersList.unshift({
+        username: user.username,
+        age: user.age,
+        id: Math.random().toString(),
+      });
       return updatedUsersList;
     });
   }
 
   const deleteUserHandler = (userId) => {
     setUsersList((prevUsersList) => {
-      const updatedUsersList = prevUsersList.filter((user) => user.id !== userId);
+      const updatedUsersList = prevUsersList.filter(
+        (user) => user.id !== userId
+      );
       return updatedUsersList;
     });
   };
 
   return (
     <div>
-      <UserForm onAddUser={addUserHandler}/>
-      <UserList usersList={usersList} onDeleteUser={deleteUserHandler} />
+      <UserForm onAddUser={addUserHandler} />
+      {usersList.length > 0 ? (
+        <UserList usersList={usersList} onDeleteUser={deleteUserHandler} />
+      ) : (
+        <EmptyList />
+      )}
     </div>
   );
 }

@@ -1,0 +1,16 @@
+.empty-list {
+    padding: 0.5rem 1rem;
+    max-width: 40rem;
+    margin: 1rem auto;
+    border-radius: 10px;
+    background: transparent;
+    border: solid 2px transparent;
+}
+
+.empty-list h2 {
+    font-size: 2rem;
+    color: rgb(220, 246, 181);
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
