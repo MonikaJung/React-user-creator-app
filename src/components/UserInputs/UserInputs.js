@@ -4,26 +4,56 @@ import styles from "./UserInput.module.css";
 export default function UserForm() {
   const [usernameInput, setUsernameInput] = React.useState("");
   const [ageInput, setAgeInput] = React.useState("");
+  const [isUsernameCorrect, setIsUsernameCorrect] = React.useState(true);
+  const [isAgeCorrect, setIsAgeCorrect] = React.useState(true);
 
   function onUsernameChangeHandler(event) {
-    if (event.target.value === "") console.log("wrong input - TO DO");
-    else console.log("input correct");
     setUsernameInput(event.target.value);
   }
 
   function onAgeChangeHandler(event) {
-    if (event.target.value === "" || event.target.value < 0)
-      console.log("wrong input - TO DO");
-    else console.log("input correct");
     setAgeInput(event.target.value);
   }
 
-  function onSubmitHandler() {
-    const userData = {
-      username: usernameInput,
-      age: ageInput,
-    };
-    console.log(userData);
+  function onSubmitHandler(event) {
+    event.preventDefault();
+    
+    if(areInputsValid()) {
+      const userData = {
+        username: usernameInput,
+        age: ageInput,
+      };
+      console.log("SUBMIT");
+      console.log(userData);
+    }
+    else console.log("SUBMIT DENIED");
+  }
+
+  function areInputsValid(){
+    let isUsernameOK = false;
+    let isAgeOK = false;
+    const usernameRegEx = new RegExp("^[A-Za-z]+[A-Za-z0-9_.@//-]*[A-Za-z0-9_.//-]+[A-Za-z0-9]+$");
+
+    if (usernameInput === "" || !usernameRegEx.test(usernameInput)) setIsUsernameCorrect(false);
+    else {
+      setIsUsernameCorrect(true);
+      isUsernameOK = true;
+    }
+    if (ageInput === "" || ageInput < 0)
+      setIsAgeCorrect(false);
+    else {
+      setIsAgeCorrect(true);
+      isAgeOK = true;
+    }
+
+    return isUsernameOK && isAgeOK;
+  }
+
+  function onResetHandler(event) {
+    event.preventDefault();
+    setUsernameInput("");
+    setAgeInput("");
+    console.log("RESET");
   }
 
   return (
@@ -49,7 +79,9 @@ export default function UserForm() {
         </div>
       </div>
       <div className={styles["form-actions"]}>
-        <button className={styles["button-reset"]}>Reset</button>
+        <button className={styles["button-reset"]} onClick={onResetHandler}>
+          Reset
+        </button>
         <button type="submit" className={styles["button-submit"]}>
           Add User
         </button>

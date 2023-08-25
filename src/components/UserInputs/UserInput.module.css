@@ -47,5 +47,7 @@
 }
 
 .button-reset {
-
+    border-radius: 10px;
+    background-color: rgb(252, 255, 175);
+    border-color:  rgb(201, 172, 26);
 }
