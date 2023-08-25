@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./UserInput.module.css";
+import styles from "./UserForm.module.css";
 
-export default function UserForm() {
+export default function UserForm(props) {
   const [usernameInput, setUsernameInput] = React.useState("");
   const [ageInput, setAgeInput] = React.useState("");
   const [isUsernameCorrect, setIsUsernameCorrect] = React.useState(true);
@@ -25,9 +25,8 @@ export default function UserForm() {
         username: usernameInput,
         age: ageInput,
       };
-      console.log("SUBMIT");
-      console.log(userData);
       cleanInputs();
+      props.onAddUser(userData)
     }
     else console.log("SUBMIT DENIED");
   }
