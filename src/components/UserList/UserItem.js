@@ -1,8 +1,16 @@
 import React from "react";
-import styles from "./UserList.module.css";
+import styles from "./UserItem.module.css";
 
 export default function UserItem(props) {
-  return <div className={styles["user-item"]}>
-    <div>{props.username} ({props.age} years old)</div>
-  </div>;
+  function onDeleteClick() {
+    props.onDeleteUser(props.id);
+  }
+  return (
+    <div className={styles["user-item"]}>
+      <label>
+        <strong>{props.username}</strong> ({props.age} years old)
+      </label>
+      <button onClick={onDeleteClick}>Delete</button>
+    </div>
+  );
 }

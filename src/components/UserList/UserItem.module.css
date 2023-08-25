@@ -1,7 +1,28 @@
 .user-item {
-    padding: 1rem;
-    max-width: 40rem;
-    margin: 2rem auto;
-    border-radius: 10px;
-    background: linear-gradient(180deg, rgb(252, 255, 175), rgb(255, 234, 141));
+  padding: 1rem;
+  max-width: 36rem;
+  margin: 1rem auto;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgb(210, 255, 175), rgb(210, 255, 141));
 }
+
+.user-item p {
+  font-size: 1rem;
+}
+
+.user-item button {
+  float: right;
+  height: auto;
+  width: auto;
+  font-size: 1rem;
+  border-radius: 15px;
+  background-color: rgb(164, 200, 111);
+  border: 1.5px solid rgb(129, 158, 87);
+}
+
+
+.user-item button:hover,
+.user-item button:active {
+    background-color: rgb(209, 240, 164);
+    border: 1.5px solid rgb(110, 137, 73);
+  }
