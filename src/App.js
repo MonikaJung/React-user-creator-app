@@ -1,8 +1,12 @@
-import UserForm from './components/UserInputs/UserInputs';
+import UserForm from "./components/UserInputs/UserInputs";
+import UserList from "./components/UserList/UserList";
 
 function App() {
   return (
-    <UserForm />
+    <div>
+      <UserForm />
+      <UserList />
+    </div>
   );
 }
 

@@ -1,0 +1,7 @@
+.user-list {
+    padding: 1rem;
+    max-width: 40rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgb(210, 255, 175), rgb(210, 255, 141));
+}

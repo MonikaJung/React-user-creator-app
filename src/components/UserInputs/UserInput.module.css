@@ -28,6 +28,14 @@
     margin-bottom: 0.5rem;
 }
 
+.form-inputs-pair p {
+    color: rgb(194, 0, 0);
+    font-style: italic;
+    font-size: 1rem;
+    text-align: center;
+    margin-left: 17%;
+}
+
 .form-actions {
   margin: auto 5rem;
 }
