@@ -20,9 +20,12 @@
   border: 1.5px solid rgb(129, 158, 87);
 }
 
-
 .user-item button:hover,
 .user-item button:active {
-    background-color: rgb(209, 240, 164);
-    border: 1.5px solid rgb(110, 137, 73);
-  }
+  background-color: rgb(209, 240, 164);
+  border: 1.5px solid rgb(110, 137, 73);
+}
+
+.user-item button:focus {
+  outline: none;
+}
